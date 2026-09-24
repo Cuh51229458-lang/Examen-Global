@@ -1,0 +1,1 @@
+PASS: CRUD desde React sobre API real; detalle individual; persistencia al recargar; cancelar eliminación; confirmar eliminación; filtros; búsqueda vacía; móvil sin desbordamiento; fallo de red y reintento; cero errores JavaScript.

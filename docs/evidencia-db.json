@@ -1,0 +1,67 @@
+{
+  "fecha": "2026-09-24T02:21:54.962Z",
+  "base": "entrega",
+  "colecciones": [
+    {
+      "name": "entregas",
+      "type": "collection",
+      "options": {},
+      "info": {
+        "readOnly": false,
+        "uuid": "1abd8b50-6d45-4461-8419-859c915191e0"
+      },
+      "idIndex": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      }
+    },
+    {
+      "name": "materias",
+      "type": "collection",
+      "options": {},
+      "info": {
+        "readOnly": false,
+        "uuid": "b98330db-bf3d-4d90-8095-cbd74a8903d9"
+      },
+      "idIndex": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      }
+    }
+  ],
+  "entregas": [
+    {
+      "_id": "6ab4877e080e948d6480fea7",
+      "clave": "integrar la api del proyecto final",
+      "materia": "6ab4877e080e948d6480fe9f",
+      "createdAt": "2026-09-24T02:14:22.821Z",
+      "descripcion": "Entrega de ejemplo para explorar el flujo académico. Puedes editarla o eliminarla.",
+      "estado": "en_progreso",
+      "fechaLimite": "2026-09-25",
+      "minutos": 120,
+      "prioridad": "alta",
+      "titulo": "Integrar la API del proyecto final",
+      "updatedAt": "2026-09-24T02:14:22.821Z"
+    },
+    {
+      "_id": "6ab4877e080e948d6480fea9",
+      "clave": "diseñar el modelo de datos",
+      "materia": "6ab4877e080e948d6480fea1",
+      "createdAt": "2026-09-24T02:14:22.823Z",
+      "descripcion": "Entrega de ejemplo para explorar el flujo académico. Puedes editarla o eliminarla.",
+      "estado": "pendiente",
+      "fechaLimite": "2026-09-24",
+      "minutos": 90,
+      "prioridad": "alta",
+      "titulo": "Diseñar el modelo de datos",
+      "updatedAt": "2026-09-24T02:14:22.823Z"
+    }
+  ],
+  "total": 6
+}
