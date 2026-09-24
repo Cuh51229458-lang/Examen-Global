@@ -74,6 +74,7 @@ Construye y levanta los servicios, captura `docker compose ps`, comprueba la API
 Requisitos: Node.js 20.19+ o 22.12+ y npm. Instala dependencias:
 
 ```bash
+npm install
 npm run install:all
 cp server/.env.example server/.env
 ```
