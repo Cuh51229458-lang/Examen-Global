@@ -154,3 +154,11 @@ Las 8 pruebas de integración usan HTTP y un proceso MongoDB aislado: CRUD, erro
 ## Git y defensa
 
 Los commits registran definición, backend, frontend, contenedores/pruebas y documentación. El historial corresponde al desarrollo real. El video técnico local no reemplaza la defensa oral del estudiante ni la ejecución pendiente de Docker; usa el guion para completar esa parte.
+
+## Regenerar los entregables
+
+- PDF: instala `reportlab` y ejecuta `python3 scripts/generar-pdf.py`. El script usa las capturas y JSON de `docs`. Edita los datos de portada en el script antes de generar la versión personalizada.
+- Video: con los servicios locales activos, ejecuta `npm install`, `npx playwright install ffmpeg` y `node scripts/grabar-demo.cjs`. Requiere Google Chrome. La grabación crea y elimina un registro de demostración.
+- Prueba de navegador: `npm run test:e2e` con MongoDB, API y Vite activos; guarda capturas y elimina solo los registros de prueba.
+
+La grabación local dura aproximadamente 1 minuto 13 segundos, sin narración. La defensa oral y el segmento Docker se completan siguiendo el guion.
