@@ -1,6 +1,21 @@
 {
- "name":"entrega-api","version":"1.0.0","private":true,"type":"module",
- "scripts":{"start":"node src/server.js","dev":"node --watch src/server.js","test":"node --test test/*.test.js","seed":"node scripts/seed.js","db:local":"node scripts/local-db.js"},
- "dependencies":{"express":"^5.1.0","mongoose":"^8.19.0","dotenv":"^16.6.1"},
- "devDependencies":{"mongodb-memory-server":"^10.2.0"}
+  "name": "entrega-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node scripts/dev.js",
+    "test": "node --test test/*.test.js",
+    "seed": "node scripts/seed.js",
+    "db:local": "node scripts/local-db.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.0",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.2.0"
+  }
 }

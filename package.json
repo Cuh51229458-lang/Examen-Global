@@ -10,7 +10,8 @@
     "test": "npm test --prefix server",
     "build": "npm run build --prefix client",
     "test:e2e": "node scripts/test-e2e.cjs",
-    "format": "prettier --write \"client/src/**/*.{js,jsx,css}\" \"server/**/*.js\" \"scripts/*.{js,cjs,mjs}\" \"*.json\" \"docker-compose.yml\""
+    "format": "prettier --write \"client/src/**/*.{js,jsx,css}\" \"server/**/*.js\" \"scripts/*.{js,cjs,mjs}\" \"*.json\" \"docker-compose.yml\"",
+    "dev": "node server/scripts/dev.js --full"
   },
   "devDependencies": {
     "playwright": "^1.63.0",

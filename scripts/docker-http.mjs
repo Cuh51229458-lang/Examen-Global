@@ -17,7 +17,7 @@ async function call(path, method = "GET", body) {
   assert.ok(response.ok, `${method} ${path}: ${response.status}`);
   return response.status === 204 ? null : response.json();
 }
-await mkdir("tmp", { recursive: true });
+await mkdir("../documentacion/Examen Global/temporales", { recursive: true });
 assert.equal((await call("/health")).database, "connected");
 if (process.argv[2] === "create") {
   let materia = (await call("/materias"))[0];
@@ -34,13 +34,13 @@ if (process.argv[2] === "create") {
     estado: "pendiente",
     minutos: 5,
   });
-  await writeFile("tmp/docker-record.json", JSON.stringify(item));
+  await writeFile("../documentacion/Examen Global/temporales/docker-record.json", JSON.stringify(item));
   console.log("CREATE desde el proxy frontend:", item._id, item.titulo);
 } else {
-  const expected = JSON.parse(await readFile("tmp/docker-record.json", "utf8"));
+  const expected = JSON.parse(await readFile("../documentacion/Examen Global/temporales/docker-record.json", "utf8"));
   const found = await call("/entregas/" + expected._id);
   assert.equal(found.titulo, expected.titulo);
   console.log("READ tras down/up: registro conservado", found._id);
   await call("/entregas/" + found._id, "DELETE");
-  await unlink("tmp/docker-record.json");
+  await unlink("../documentacion/Examen Global/temporales/docker-record.json");
 }

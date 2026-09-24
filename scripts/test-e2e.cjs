@@ -1,7 +1,7 @@
 const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
-const dir = require("node:path").resolve("docs/capturas");
+const dir = require("node:path").resolve("../documentacion/Examen Global/capturas");
 fs.mkdirSync(dir, { recursive: true });
 (async () => {
   const browser = await chromium.launch({ channel: "chrome", headless: true });
