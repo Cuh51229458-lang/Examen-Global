@@ -7,11 +7,18 @@ mkdir -p "../documentacion/Examen Global"
 exec > >(tee "../documentacion/Examen Global/docker-verificacion.txt") 2>&1
 echo "=== Construcción y ejecución real ==="
 date -u
-docker compose up --build -d --wait
+echo "+ docker compose up --build -d --wait"
+docker compose up --build -d --wait --wait-timeout 180
+echo "+ docker compose ps"
 docker compose ps
 node scripts/docker-http.mjs create
+docker compose ps --format json > "../documentacion/Examen Global/docker-antes.json"
+echo "+ docker compose down"
 docker compose down
-docker compose up -d --wait
+echo "+ docker compose up -d --wait"
+docker compose up -d --wait --wait-timeout 180
+echo "+ docker compose ps"
 docker compose ps
+docker compose ps --format json > "../documentacion/Examen Global/docker-despues.json"
 node scripts/docker-http.mjs verify
 echo "PASS: frontend -> backend -> MongoDB y persistencia tras recrear contenedores."

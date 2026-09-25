@@ -1,17 +1,19 @@
 const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
-const dir = require("node:path").resolve("../documentacion/Examen Global/capturas");
+const appUrl = process.env.APP_URL || "http://127.0.0.1:5176";
+const apiUrl = process.env.API_URL || "http://127.0.0.1:5001/api";
+const dir = require("node:path").resolve(process.env.EVIDENCE_DIR || "../documentacion/Examen Global/capturas");
 fs.mkdirSync(dir, { recursive: true });
 (async () => {
   const browser = await chromium.launch({ channel: "chrome", headless: true });
-  const old = await fetch("http://127.0.0.1:5001/api/entregas").then((r) =>
+  const old = await fetch(apiUrl + "/entregas").then((r) =>
     r.json(),
   );
   for (const i of old.filter((i) =>
     ["Entrega de prueba E2E", "Entrega E2E editada"].includes(i.titulo),
   ))
-    await fetch("http://127.0.0.1:5001/api/entregas/" + i._id, {
+    await fetch(apiUrl + "/entregas/" + i._id, {
       method: "DELETE",
     });
   const page = await browser.newPage({
@@ -20,7 +22,7 @@ fs.mkdirSync(dir, { recursive: true });
   });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://127.0.0.1:5176");
+  await page.goto(appUrl);
   await page
     .getByRole("button", {
       name: "Integrar la API del proyecto final",

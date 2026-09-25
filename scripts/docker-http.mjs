@@ -13,7 +13,9 @@ async function call(path, method = "GET", body) {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
+    signal: AbortSignal.timeout(15000),
   });
+  console.log(`${method} ${path} -> HTTP ${response.status}`);
   assert.ok(response.ok, `${method} ${path}: ${response.status}`);
   return response.status === 204 ? null : response.json();
 }
@@ -40,6 +42,9 @@ if (process.argv[2] === "create") {
   const expected = JSON.parse(await readFile("../documentacion/Examen Global/temporales/docker-record.json", "utf8"));
   const found = await call("/entregas/" + expected._id);
   assert.equal(found.titulo, expected.titulo);
+  assert.equal(found._id, expected._id);
+  assert.equal(found.minutos, expected.minutos);
+  await writeFile("../documentacion/Examen Global/docker-persistencia.json", JSON.stringify({fecha:new Date().toISOString(),antes:expected,despues:found,resultado:"PASS: mismo registro tras recrear contenedores"},null,2));
   console.log("READ tras down/up: registro conservado", found._id);
   await call("/entregas/" + found._id, "DELETE");
   await unlink("../documentacion/Examen Global/temporales/docker-record.json");
